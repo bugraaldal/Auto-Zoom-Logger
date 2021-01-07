@@ -35,7 +35,15 @@ def join(entering_first, Run, id, parola):  # main function
         time.sleep(5)
         pyautogui.write(id)
         time.sleep(2)
-        pyautogui.press("enter")
+        # Chcking the boxes in order to not connect our camera and microphone
+        buttons = pyautogui.locateAllOnScreen("clickBox.png")
+        for button in buttons:
+            pyautogui.moveTo(button)
+            pyautogui.click()
+            time.sleep(3)
+        join2nd = pyautogui.locateCenterOnScreen("joinbl.png")
+        pyautogui.moveTo(join2nd)
+        pyautogui.click()
         time.sleep(5)
         pyautogui.write(parola)
         time.sleep(5)
